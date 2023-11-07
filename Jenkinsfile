@@ -8,11 +8,7 @@ pipeline {
                 sh 'pwd'
             }
         }
-        stage('Stage 2') {
-            steps {
-                echo 'i’m on stage 2'
-            }
-        }
+        
         stage('Execute HelloWorld') {
             steps {
                 sh 'java -jar HelloWorld.jar'
