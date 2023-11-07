@@ -2,7 +2,7 @@ pipeline {
     agent none
     stages {
         stage('Build Java Project') {
-            agent any
+            agent {label 'master'}
             steps {
                 sh 'javac HelloWorld.java'
                 sh 'jar cfm HelloWorld.jar Manifest.txt HelloWorld.class'
