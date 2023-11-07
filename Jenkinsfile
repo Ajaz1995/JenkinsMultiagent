@@ -21,4 +21,5 @@ pipeline {
         success {
             archiveArtifacts artifacts: 'HelloWorld.jar'
     }
-
+  }
+}
