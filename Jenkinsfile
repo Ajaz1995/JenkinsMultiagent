@@ -2,7 +2,6 @@ pipeline {
     agent any
     stages {
         stage('Build Java Project') {
-            agent { label 'agent1'}
             steps {
                 sh 'javac HelloWorld.java'
                 sh 'jar cfm HelloWorld.jar Manifest.txt HelloWorld.class'
@@ -11,6 +10,7 @@ pipeline {
             }
         }
         stage('Execute HelloWorld') {
+            agent { label 'agent1'}
             steps {
                 unstash 'myapp'
                 sh 'java -jar HelloWorld.jar' 
