@@ -4,7 +4,7 @@ pipeline {
         stage('Build Java Project') {
             steps {
                 sh 'javac HelloWorld.java'
-                sh 'jar cfm HelloWorld.jar Manifest.txt HelloWorld.class'
+                sh 'jar cvf HelloWorld.jar HelloWorld.class'
                 stash includes: 'HelloWorld.jar', name: 'myapp'
             }
         }
