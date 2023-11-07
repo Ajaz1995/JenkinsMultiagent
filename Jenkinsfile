@@ -12,7 +12,7 @@ pipeline {
         stage('Execute HelloWorld') {
             agent { label 'agent1'}
             steps {
-                unstash 'myapp'
+                //unstash 'myapp'
                 sh 'java -jar HelloWorld.jar' 
             }
           }
