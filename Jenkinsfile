@@ -1,26 +1,23 @@
 pipeline {
-    agent any
-
+    agent { label 'agent1'}
     stages {
-        stage('Build and Stash') {
+        stage('Build Java Project') {
             steps {
-                // Step 1: Build the Java project and create JAR
                 sh 'javac HelloWorld.java'
-                sh 'jar cvf HelloWorld.jar HelloWorld.class'
-
-                // Step 2: Stash the JAR file
-                stash name: 'hello_world_jar', includes: 'HelloWorld.jar'
+                sh 'jar cfm HelloWorld.jar Manifest.txt HelloWorld.class'
             }
         }
-
-        stage('Pull and Execute') {
+        stage('Execute HelloWorld') {
             steps {
-                // Step 3: Unstash the JAR file
-                unstash 'hello_world_jar'
-
-                // Step 4: Execute the JAR file
                 sh 'java -jar HelloWorld.jar'
+            
             }
-        }
-    }
-}
+          }
+       }
+        post {
+        success {
+            archiveArtifacts artifacts: 'HelloWorld.jar'
+       }
+    }    
+ }
+
