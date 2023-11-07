@@ -7,15 +7,13 @@ pipeline {
                 sh 'javac HelloWorld.java'
                 sh 'jar cfm HelloWorld.jar Manifest.txt HelloWorld.class'
                 stash name: 'myapp', includes: 'HelloWorld.jar'
-                sh 'pwd'
             }
         }
         stage('Execute HelloWorld') {
             agent { label 'agent1'}
             steps {
                 unstash 'myapp'
-                sh 'pwd'
-                sh 'java -jar HelloWorld.jar' 
+                sh 'java -jar myapp/HelloWorld.jar' 
             }
           }
        }
