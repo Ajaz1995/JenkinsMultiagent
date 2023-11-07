@@ -5,14 +5,14 @@ pipeline {
             agent {label 'master'}
             steps {
                 sh 'javac HelloWorld.java'
-                sh 'jar cfm HelloWorld.jar Manifest.txt HelloWorld.class'
-                stash name: 'myapp', includes: 'HelloWorld.jar'
+                sh 'jar cvf HelloWorld.jar HelloWorld.class'
+                stash name: 'hello_world_jar', includes: 'HelloWorld.jar'
             }
         }
         stage('Execute HelloWorld') {
             agent { label 'agent1'}
             steps {
-                unstash 'myapp'
+                unstash 'hello_world_jar'
                 sh 'java -jar HelloWorld.jar' 
             }
           }
