@@ -11,7 +11,7 @@ pipeline {
         }
         stage('Execute HelloWorld') {
             steps {
-                unstash 'myapp'
+                //unstash 'myapp'
                 //sh 'java -jar HelloWorld.jar'
             
             }
