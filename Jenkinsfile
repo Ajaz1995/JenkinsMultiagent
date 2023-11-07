@@ -6,7 +6,7 @@ pipeline {
             steps {
                 sh 'javac HelloWorld.java'
                 sh 'jar cfm HelloWorld.jar Manifest.txt HelloWorld.class'
-                stash includes: 'HelloWorld.class', name: 'myapp'
+                stash name: 'myapp', includes: 'HelloWorld.jar'
             }
         }
         stage('Execute HelloWorld') {
