@@ -12,7 +12,7 @@ pipeline {
             agent { label 'agent1'}
             steps {
                 unstash 'myapp'
-                sh 'java -jar HelloWorld.jar' 
+                sh 'java -jar myapp/HelloWorld.jar' 
             }
           }
        }
