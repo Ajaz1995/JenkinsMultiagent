@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'agent1'}
+    agent any
     stages {
         stage('Build Java Project') {
             steps {
@@ -10,6 +10,7 @@ pipeline {
         }
         
         stage('Execute HelloWorld') {
+           agent { label 'agent1'}
             steps {
                 sh 'java -jar HelloWorld.jar'
             
