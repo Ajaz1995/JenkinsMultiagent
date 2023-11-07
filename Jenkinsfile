@@ -9,13 +9,13 @@ pipeline {
                 stash includes: 'HelloWorld.jar', name: 'myapp'
             }
         }
-        stage('Execute HelloWorld') {
-            steps {
+        //stage('Execute HelloWorld') {
+           // steps {
                 //unstash 'myapp'
                 //sh 'java -jar HelloWorld.jar'
             
-            }
-          }
+            //}
+          //}
        }
     }
 
