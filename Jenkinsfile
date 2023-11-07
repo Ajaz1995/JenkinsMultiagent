@@ -1,7 +1,8 @@
 pipeline {
-    agent any
+    agent none
     stages {
         stage('Build Java Project') {
+            agent any
             steps {
                 sh 'javac HelloWorld.java'
                 sh 'jar cfm HelloWorld.jar Manifest.txt HelloWorld.class'
