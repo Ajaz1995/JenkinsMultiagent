@@ -6,7 +6,7 @@ pipeline {
             steps {
                 sh 'javac HelloWorld.java'
                 sh 'jar cfm HelloWorld.jar Manifest.txt HelloWorld.class'
-                stash name: '**/var/jenkins_home/hello_world_jar', includes: 'HelloWorld.jar'
+                stash name: 'hello_world_jar', includes: 'HelloWorld.jar'
             }
         }
         stage('Execute HelloWorld') {
