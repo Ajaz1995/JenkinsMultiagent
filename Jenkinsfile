@@ -21,7 +21,6 @@ pipeline {
         stage('Execute Hello World') {
             agent { label 'agent1' }
             steps {
-                //sh 'rm -f HelloWorld.jar'
                 sh 'java -jar HelloWorld.jar' 
             }
         }
