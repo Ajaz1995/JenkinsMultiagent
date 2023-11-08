@@ -6,14 +6,18 @@ pipeline {
             steps {
                 sh 'javac HelloWorld.java'
                 sh 'jar cf HelloWorld.jar HelloWorld.class'
-                stash name: 'my-artifact', includes: '/var/jenkins_home/artifacts/hello-world.jar'
+                stash name: 'my-artifact', includes: '/var/jenkins_home/artifacts/HelloWorld.jar'
 
             }
         }
-        stage('Execute HelloWorld') {
+        stage('Retrieve Artifact') {
             agent { label 'agent1'}
             steps {
                 unstash 'my-artifact'
+            }
+        }
+         stage('Execute Hello World') {
+             steps {
                 sh 'java -jar HelloWorld.jar' 
             }
           }
