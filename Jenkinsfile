@@ -5,6 +5,7 @@ pipeline {
             agent {label 'master'}
             steps {
                 sh 'javac HelloWorld.java'
+                sh 'jar cf HelloWorld.jar HelloWorld.class'
                 stash name: 'hello_world_jar', includes: 'HelloWorld.jar'
             }
         }
