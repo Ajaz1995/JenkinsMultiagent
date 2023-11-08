@@ -18,8 +18,10 @@ pipeline {
         }
          stage('Execute Hello World') {
              steps {
-                sh 'java -jar HelloWorld.jar' 
+                 node {
+                    sh 'java -jar HelloWorld.jar' 
             }
           }
        }
     }
+}
