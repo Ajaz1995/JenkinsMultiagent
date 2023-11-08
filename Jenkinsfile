@@ -7,7 +7,6 @@ pipeline {
                 sh 'javac HelloWorld.java'
                 sh 'jar cf HelloWorld.jar HelloWorld.class'
                 stash name: 'my-artifact', includes: 'HelloWorld.jar'
-
             }
         }
         stage('Retrieve Artifact') {
@@ -16,12 +15,11 @@ pipeline {
                 unstash 'my-artifact'
             }
         }
-         stage('Execute Hello World') {
-             steps {
-                 node {
-                    sh 'java -jar HelloWorld.jar' 
+        stage('Execute Hello World') {
+            agent { label 'agent1' }
+            steps {
+                sh 'java -jar HelloWorld.jar' 
             }
-          }
-       }
+        }
     }
 }
