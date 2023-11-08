@@ -14,7 +14,7 @@ pipeline {
             agent { label 'agent1'}
             steps {
                 unstash 'my-artifact'
-                sh 'ls'
+                //sh 'ls'
             }
         }
         stage('Execute Hello World') {
