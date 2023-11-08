@@ -6,7 +6,7 @@ pipeline {
             steps {
                 sh 'javac HelloWorld.java'
                 sh 'jar cf HelloWorld.jar HelloWorld.class'
-                stash name: 'my-artifact', includes: '/var/jenkins_home/artifacts/HelloWorld.jar'
+                stash name: 'my-artifact', includes: '/var/jenkins_home/HelloWorld.jar'
 
             }
         }
