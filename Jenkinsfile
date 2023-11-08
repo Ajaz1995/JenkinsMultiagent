@@ -7,6 +7,7 @@ pipeline {
                 sh 'javac HelloWorld.java'
                 //sh 'jar cfm HelloWorld.jar Manifest.txt HelloWorld.class'
                 stash name: 'hello_world_jar', includes: 'HelloWorld.class'
+                sh 'rm -f HelloWorld.jar'
             }
         }
         stage('Execute HelloWorld') {
