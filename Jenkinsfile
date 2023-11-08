@@ -8,7 +8,7 @@ pipeline {
                 sh 'jar cfm HelloWorld.jar Manifest.txt HelloWorld.class'
                 sh 'ls'
                 sh 'rm -f HelloWorld.jar'
-                //stash name: 'my-artifact', includes: '**'
+                stash name: 'my-artifact', includes: '**'
             }
         }
         stage('Retrieve Artifact') {
