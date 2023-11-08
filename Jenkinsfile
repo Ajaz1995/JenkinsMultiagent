@@ -13,7 +13,7 @@ pipeline {
         stage('Retrieve Artifact') {
             agent { label 'agent1'}
             steps {
-                //unstash 'my-artifact'
+                unstash 'my-artifact'
                 sh 'ls'
             }
         }
