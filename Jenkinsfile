@@ -1,8 +1,7 @@
 pipeline {
-    agent none
+    agent {label 'agent1'}
     stages {
         stage('Build Java Project') {
-            agent {label 'master'}
             steps {
                 sh 'javac HelloWorld.java'
                 sh 'jar cfm HelloWorld.jar Manifest.txt HelloWorld.class'
@@ -12,14 +11,12 @@ pipeline {
             }
         }
         stage('Retrieve Artifact') {
-            agent { label 'agent1'}
             steps {
                 unstash 'my-artifact'
                 sh 'ls'
             }
         }
         stage('Execute Hello World') {
-            agent { label 'agent1'}
             steps {
                 sh 'java -jar HelloWorld.jar' 
             }
