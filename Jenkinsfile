@@ -12,12 +12,12 @@ pipeline {
         }
         stage('Retrieve Artifact') {
             steps {
-                unstash 'my-artifact'
                 sh 'ls'
             }
         }
         stage('Execute Hello World') {
             steps {
+                unstash 'my-artifact'
                 sh 'java -jar HelloWorld.jar' 
             }
         }
