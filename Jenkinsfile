@@ -10,7 +10,7 @@ pipeline {
                 sh 'rm -f HelloWorld.jar'
             }
         }
-        stage('Retrieve Artifact') {
+        stage('List Files') {
             steps {
                 sh 'ls'
             }
