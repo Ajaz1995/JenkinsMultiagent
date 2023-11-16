@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent {label 'agent-test'
     stages {
         stage('Build Java Project') {
             steps {
