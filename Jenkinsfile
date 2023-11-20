@@ -6,7 +6,7 @@ pipeline {
                 sh 'javac HelloWorld.java'
                 sh 'jar cfm HelloWorld.jar Manifest.txt HelloWorld.class'
                 sh 'ls'
-                stash name: 'my-artifact', includes: '**'
+                stash name: 'my-artifact', includes: 'HelloWorld.jar'
                 sh 'rm -f HelloWorld.jar'
             }
         }
