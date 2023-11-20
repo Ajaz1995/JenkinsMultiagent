@@ -1,5 +1,5 @@
 pipeline {
-    agent {label 'agent-test'}
+    agent {label 'agent1'}
     stages {
         stage('Build Java Project') {
             steps {
