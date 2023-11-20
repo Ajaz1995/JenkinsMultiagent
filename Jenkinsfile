@@ -1,4 +1,5 @@
-pipeline { 
+pipeline {
+    agent none
     stages {
         stage('Build Java Project') {
             agent {label 'agent1'}
