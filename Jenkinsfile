@@ -1,8 +1,8 @@
 pipeline {
-    agent none
+    agent { dockerfile true }
     stages {
         stage('Build Java Project') {
-            agent {label 'agent1'}
+            //agent {label 'agent1'}
             steps {
                 sh 'javac HelloWorld.java'
                 sh 'jar cfm HelloWorld.jar Manifest.txt HelloWorld.class'
@@ -12,13 +12,13 @@ pipeline {
             }
         }
         stage('List Files') {
-            agent {label 'agent1'}
+            //agent {label 'agent1'}
             steps {
                 sh 'ls'
             }
         }
         stage('Execute Hello World') {
-            agent {label 'agent1'}
+            //agent {label 'agent1'}
             steps {
                 unstash 'my-artifact'
                 sh 'java -jar HelloWorld.jar' 
