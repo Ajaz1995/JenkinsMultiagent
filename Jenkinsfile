@@ -1,7 +1,7 @@
 pipeline {
     agent none
     stages {
-        stage('Build Java Project') 
+        stage('Build Java Project') {
         agent {
                 docker { image 'openjdk:22-slim-bullseye' }
             }
