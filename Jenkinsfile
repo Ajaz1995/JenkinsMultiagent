@@ -1,5 +1,5 @@
 pipeline {
-    agent {
+    agent
         docker { image 'openjdk:22-slim-bullseye' }
     stages {
         stage('Build Java Project') {
@@ -28,4 +28,3 @@ pipeline {
         }
     }
  }
-}
