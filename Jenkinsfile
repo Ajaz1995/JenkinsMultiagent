@@ -2,8 +2,7 @@ pipeline {
     agent none
     stages {
         stage('Build Java Project') {
-            agent 
-                    { dockerfile true
+            agent  { dockerfile true
                       args  '--no-cache'
                     }       
             steps {
@@ -22,8 +21,7 @@ pipeline {
             }
         }
         stage('Execute Hello World') {
-            agent 
-                { dockerfile true}
+            agent { dockerfile true}
             steps {
                 unstash 'my-artifact'
                 sh 'java -jar HelloWorld.jar' 
