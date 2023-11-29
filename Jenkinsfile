@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-        dockerfile {
-            additionalBuildArgs '--no-cache'
-        }
-    }
+    agent none
     stages {
         stage('Build Java Project') {
             agent { dockerfile true }
