@@ -14,6 +14,7 @@ pipeline {
         stage('List Files') {
             agent { dockerfile true }
             steps {
+                echo 'Listing files in the working directory' 
                 sh 'ls'
             }
         }
