@@ -1,8 +1,9 @@
 pipeline {
-    agent none
+    agent {
+        docker { image 'openjdk:22-slim-bullseye' }
     stages {
         stage('Build Java Project') {
-            agent { dockerfile true }
+            //agent { dockerfile true }
             steps {
                 sh 'javac HelloWorld.java'
                 sh 'jar cfm HelloWorld.jar Manifest.txt HelloWorld.class'
@@ -12,14 +13,14 @@ pipeline {
             }
         }
         stage('List Files') {
-            agent { dockerfile true}
+            //agent { dockerfile true}
             steps {
                 echo 'Listing files in the working directory' 
                 sh 'ls'
             }
         }
         stage('Execute Hello World') {
-            agent { dockerfile true}
+            //agent { dockerfile true}
             steps {
                 unstash 'my-artifact'
                 sh 'java -jar HelloWorld.jar' 
