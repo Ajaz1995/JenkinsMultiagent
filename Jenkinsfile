@@ -2,9 +2,7 @@ pipeline {
     agent none
     stages {
         stage('Build Java Project') {
-            agent  { dockerfile true
-                      args  '--no-cache'
-                    }       
+            agent { dockerfile true }
             steps {
                 sh 'javac HelloWorld.java'
                 sh 'jar cfm HelloWorld.jar Manifest.txt HelloWorld.class'
