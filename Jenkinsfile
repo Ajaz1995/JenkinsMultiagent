@@ -2,9 +2,11 @@ pipeline {
     agent none
     stages {
         stage('Build Java Project') {
-            agent 
-                { dockerfile true
-                  args  '--no-cache'}
+            agent {
+                    { dockerfile true
+                      args  '--no-cache'
+                    }
+                }
             steps {
                 sh 'javac HelloWorld.java'
                 sh 'jar cfm HelloWorld.jar Manifest.txt HelloWorld.class'
@@ -14,9 +16,7 @@ pipeline {
             }
         }
         stage('List Files') {
-            agent 
-                { dockerfile true
-                  args  '--no-cache'}
+            agent { dockerfile true}
             steps {
                 echo 'Listing files in the working directory' 
                 sh 'ls'
@@ -24,8 +24,7 @@ pipeline {
         }
         stage('Execute Hello World') {
             agent 
-                { dockerfile true
-                  args  '--no-cache'}
+                { dockerfile true}
             steps {
                 unstash 'my-artifact'
                 sh 'java -jar HelloWorld.jar' 
