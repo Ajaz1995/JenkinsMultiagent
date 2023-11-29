@@ -32,4 +32,9 @@ pipeline {
             }
         }
     }
- }
+            post {
+                always {
+                archiveArtifacts artifacts: 'HelloWorld.jar', fingerprint: true
+        }
+    }
+}
