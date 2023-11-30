@@ -29,7 +29,7 @@ pipeline {
             steps {
                 unstash 'my-artifact'
                 sh 'java -jar HelloWorld.jar' 
-                archiveArtifacts artifacts: 'HelloWorld.jar', fingerprint: true
+                //archiveArtifacts artifacts: 'HelloWorld.jar', fingerprint: true
             }
         }
     }      
