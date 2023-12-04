@@ -5,23 +5,27 @@ stages:
 - stage: Build
   jobs:
   - job: BuildJob
-    pool:
-      vmImage: 'ubuntu-latest'
     steps:
     - script: |
+        echo "Building Hello World Java Project"
         javac HelloWorld.java
         jar cfm HelloWorld.jar Manifest.txt HelloWorld.class
-        sh 'ls'
       displayName: 'Build Hello World Java Project'
   
 - stage: Verify
-  - script: |
-      echo 'Listing files in the directory'
-      sh 'ls'
-    displayName: 'Verify Jar File'
+  jobs:
+  - job: VerifyJob
+    steps:
+    - script: |
+        echo 'Listing files in the directory'
+        ls
+      displayName: 'Verify Jar File'
 
 - stage: Deploy
-  - script: |
-      echo 'Executing the Hello World '
-      java -jar HelloWorld.jar
-    displayName: 'Execute Hello World App'
+  jobs:
+  - job: DeployJob
+    steps:
+    - script: |
+        echo 'Executing the Hello World'
+        java -jar HelloWorld.jar
+      displayName: 'Execute Hello World App'
