@@ -1,6 +1,30 @@
 trigger:
-  - main  # Or the branch you want to trigger the pipeline on
+- main  # Define the branch trigger for your pipeline
 
-steps:
-- script: echo 'Hello, World!'
-  displayName: 'Print Hello, World!'
+pool:
+  vmImage: 'windows-latest'  # Use an appropriate agent pool and image
+
+jobs:
+- job: BuildAndRunJava
+  steps:
+  - task: UseJavaVersion@0
+    inputs:
+      version: '11'  # Use the desired Java version
+
+  - task: PowerShell@2
+    inputs:
+      targetType: 'inline'
+      script: |
+        javac HelloWorld.java
+        jar cfm HelloWorld.jar Manifest.txt HelloWorld.class
+        pwd
+
+  - task: PowerShell@2
+    inputs:
+      targetType: 'inline'
+      script: 'echo "I’m on stage 2"'
+
+  - task: PowerShell@2
+    inputs:
+      targetType: 'inline'
+      script: 'java -jar HelloWorld.jar'
