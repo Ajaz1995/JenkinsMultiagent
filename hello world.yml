@@ -1,0 +1,6 @@
+trigger:
+  - main  # Or the branch you want to trigger the pipeline on
+
+steps:
+- script: echo 'Hello, World!'
+  displayName: 'Print Hello, World!'
