@@ -1,26 +1,29 @@
 trigger:
-- main  # Define the branch trigger for your pipeline
+- main
 
-pool:
-  vmImage: 'windows-latest'  # Use an appropriate agent pool and image
-
-jobs:
-- job: BuildAndRunJava
-  steps:
-  - task: PowerShell@2
-    inputs:
-      targetType: 'inline'
-      script: |
+stages:
+- stage: Build
+  jobs:
+  - job: BuildJob
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - script: |
         javac HelloWorld.java
         jar cfm HelloWorld.jar Manifest.txt HelloWorld.class
-        pwd
+        sh 'ls'
+      displayName: 'Build Hello World Java Project'
+  
+- stage: Verify
+    steps:
+    - script: |
+        echo 'Listing files in the directory'
+        sh 'ls'
+      displayName: 'Verify Jar File'
 
-  - task: PowerShell@2
-    inputs:
-      targetType: 'inline'
-      script: 'echo "I’m on stage 2"'
-
-  - task: PowerShell@2
-    inputs:
-      targetType: 'inline'
-      script: 'java -jar HelloWorld.jar'
+- stage: Deploy
+    steps:
+    - script: |
+        echo 'Executing the Hello World '
+        java -jar HelloWorld.jar
+      displayName: 'Execute Hello World App'
