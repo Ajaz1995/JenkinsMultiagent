@@ -3,8 +3,6 @@ trigger:
 
 stages:
 - stage: Build
-  jobs:
-  - job: BuildJob
     steps:
     - script: |
         echo "Building Hello World Java Project"
@@ -15,8 +13,6 @@ stages:
       displayName: 'Build Hello World Java Project'
   
 - stage: Verify
-  jobs:
-  - job: VerifyJob
     steps:
     - script: |
         echo 'Listing files in the directory'
@@ -25,8 +21,6 @@ stages:
       displayName: 'Verify Jar File'
 
 - stage: Deploy
-  jobs:
-  - job: DeployJob
     steps:
     - script: |
         echo 'Executing the Hello World'
