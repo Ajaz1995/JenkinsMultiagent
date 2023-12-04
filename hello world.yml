@@ -3,28 +3,40 @@ trigger:
 
 stages:
 - stage: Build
-  steps:
-  - script: |
+  jobs:
+  - job: BuildJob
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - script: |
         echo "Building Hello World Java Project"
         javac HelloWorld.java
         jar cfm HelloWorld.jar Manifest.txt HelloWorld.class
         ls
         pwd
-        displayName: 'Build Hello World Java Project'
+      displayName: 'Build Hello World Java Project'
   
 - stage: Verify
-  steps:
-  - script: |
+  jobs:
+  - job: VerifyJob
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - script: |
         echo 'Listing files in the directory'
         ls
         pwd
-        displayName: 'Verify Jar File'
+      displayName: 'Verify Jar File'
 
 - stage: Deploy
-  steps:
-  - script: |
+  jobs:
+  - job: DeployJob
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - script: |
         echo 'Executing the Hello World'
         ls 
         pwd 
         java -jar HelloWorld.jar
-        displayName: 'Execute Hello World App'
+      displayName: 'Execute Hello World App'
