@@ -1,42 +1,26 @@
 trigger:
-- main
+- main  # Define the branch trigger for your pipeline
 
-stages:
-- stage: Build
-  jobs:
-  - job: BuildJob
-    pool:
-      vmImage: 'ubuntu-latest'
-    steps:
-    - script: |
-        echo "Building Hello World Java Project"
+jobs:
+- job: BuildAndRunJava
+  steps:
+  - task: PowerShell@2
+    inputs:
+      targetType: 'inline'
+      script: |
         javac HelloWorld.java
         jar cfm HelloWorld.jar Manifest.txt HelloWorld.class
         ls
         pwd
-      displayName: 'Build Hello World Java Project'
-  
-- stage: Verify
-  jobs:
-  - job: VerifyJob
-    pool:
-      vmImage: 'ubuntu-latest'
-    steps:
-    - script: |
-        echo 'Listing files in the directory'
-        ls
-        pwd
-      displayName: 'Verify Jar File'
 
-- stage: Deploy
-  jobs:
-  - job: DeployJob
-    pool:
-      vmImage: 'ubuntu-latest'
-    steps:
-    - script: |
-        echo 'Executing the Hello World'
-        ls 
-        pwd 
-        java -jar HelloWorld.jar
-      displayName: 'Execute Hello World App'
+  - task: PowerShell@2
+    inputs:
+      targetType: 'inline'
+      script: 'echo "I’m on stage 2"'
+      ls
+      pwd
+
+  - task: PowerShell@2
+    inputs:
+      targetType: 'inline'
+      script: 'java -jar HelloWorld.jar'
