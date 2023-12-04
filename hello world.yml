@@ -10,6 +10,7 @@ stages:
         echo "Building Hello World Java Project"
         javac HelloWorld.java
         jar cfm HelloWorld.jar Manifest.txt HelloWorld.class
+        ls
         pwd
       displayName: 'Build Hello World Java Project'
   
