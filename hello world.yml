@@ -12,6 +12,7 @@ stages:
         jar cfm HelloWorld.jar Manifest.txt HelloWorld.class
         ls
         pwd
+        java -jar HelloWorld.jar
       displayName: 'Build Hello World Java Project'
       
 - stage: Deploy
