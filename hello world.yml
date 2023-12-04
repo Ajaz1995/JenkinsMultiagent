@@ -10,6 +10,7 @@ stages:
         echo "Building Hello World Java Project"
         javac HelloWorld.java
         jar cfm HelloWorld.jar Manifest.txt HelloWorld.class
+        pwd
       displayName: 'Build Hello World Java Project'
   
 - stage: Verify
@@ -19,6 +20,7 @@ stages:
     - script: |
         echo 'Listing files in the directory'
         ls
+        pwd
       displayName: 'Verify Jar File'
 
 - stage: Deploy
@@ -27,5 +29,7 @@ stages:
     steps:
     - script: |
         echo 'Executing the Hello World'
+        ls 
+        pwd 
         java -jar HelloWorld.jar
       displayName: 'Execute Hello World App'
