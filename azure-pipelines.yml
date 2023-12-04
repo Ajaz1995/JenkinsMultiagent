@@ -1,8 +1,37 @@
 trigger:
-  - main  # Or the branch you want to trigger the pipeline on
+- main
 
-pool:
-  name: Default
-steps:
-- script: echo 'Hello, World!'
-  displayName: 'Print Hello, World!'
+stages:
+- stage: Build
+  jobs:
+  - job: BuildJob
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - script: |
+        javac HelloWorld.java
+        jar cfm HelloWorld.jar Manifest.txt HelloWorld.class
+        sh 'ls'
+      displayName: 'Build Hello World Java Project'
+  
+- stage: Verify
+  jobs:
+  - job: VerifyJob
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - script: |
+        echo 'Listing files in the directory'
+        sh 'ls'
+      displayName: 'Verify Jar File'
+
+- stage: Deploy
+  jobs:
+  - job: DeployJob
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - script: |
+        echo 'Executing the Hello World '
+        java -jar HelloWorld.jar
+      displayName: 'Execute Hello World App'
