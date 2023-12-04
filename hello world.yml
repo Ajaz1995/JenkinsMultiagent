@@ -13,17 +13,7 @@ stages:
         ls
         pwd
       displayName: 'Build Hello World Java Project'
-  
-- stage: Verify
-  jobs:
-  - job: VerifyJob
-    steps:
-    - script: |
-        echo 'Listing files in the directory'
-        ls
-        pwd
-      displayName: 'Verify Jar File'
-
+      
 - stage: Deploy
   jobs:
   - job: DeployJob
