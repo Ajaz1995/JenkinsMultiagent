@@ -7,10 +7,6 @@ pool:
 jobs:
 - job: BuildAndRunJava
   steps:
-  - task: UseJavaVersion@0
-    inputs:
-      version: '11'  # Use the desired Java version
-
   - task: PowerShell@2
     inputs:
       targetType: 'inline'
