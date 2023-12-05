@@ -2,9 +2,9 @@ trigger:
 - main
 
 stages:
-- stage: BuildandRun
+- stage: Build
   jobs:
-  - job: BuildandRunJob
+  - job: BuildJob
     steps:
     - script: |
         echo "Building Hello World Java Project"
@@ -12,12 +12,12 @@ stages:
         jar cfm HelloWorld.jar Manifest.txt HelloWorld.class
         ls
         pwd
-        java -jar HelloWorld.jar
-        displayName: 'Build Hello World Java Project'
+      displayName: 'Build Hello World Java Project'
+
 
 - stage: Execute
   jobs:
-  - job: ExecuteJob   
+  - job: ExecuteJob
     steps:
     - script: |
         echo 'Executing the Hello World'
@@ -25,4 +25,3 @@ stages:
         pwd 
         java -jar HelloWorld.jar
       displayName: 'Execute Hello World App'
-      
