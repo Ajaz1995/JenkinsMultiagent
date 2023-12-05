@@ -15,11 +15,3 @@ stages:
         java -jar HelloWorld.jar
       displayName: 'Build Hello World Java Project'
       
-- stage: Deploy
-  steps:
-  - script: |
-        echo 'Executing the Hello World'
-        ls 
-        pwd 
-        java -jar HelloWorld.jar
-      displayName: 'Execute Hello World App'
