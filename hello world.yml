@@ -27,7 +27,7 @@ stages:
     steps:
     - task: DownloadPipelineArtifact@2
       inputs:
-      artifactName: 'HelloWorldArtifact'
+      artifact: 'HelloWorldArtifact'
       targetPath: $(Pipeline.Workspace)
       
     - script: |
