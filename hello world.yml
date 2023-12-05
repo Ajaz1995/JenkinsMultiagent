@@ -26,12 +26,10 @@ stages:
     steps:
     - task: DownloadPipelineArtifact@2
       inputs:
-        buildType: 'specific'
-        project: '1646f920-5daa-4584-b42c-cc2684022daa'
-        definition: '7'
-        buildVersionToDownload: 'latest'
+        buildType: 'current'
         artifactName: 'HelloWorld'
         targetPath: '$(Pipeline.Workspace)'
+    
     - script: |
         echo 'Executing the Hello World'
         ls 
