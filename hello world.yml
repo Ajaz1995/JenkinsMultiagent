@@ -3,10 +3,8 @@ trigger:
 
 stages:
 - stage: Build
-  jobs:
-  - job: BuildJob
-    steps:
-    - script: |
+  steps:
+  - script: |
         echo "Building Hello World Java Project"
         javac HelloWorld.java
         jar cfm HelloWorld.jar Manifest.txt HelloWorld.class
@@ -14,23 +12,21 @@ stages:
         pwd
       displayName: 'Build Hello World Java Project'
     
-    - task: PublishPipelineArtifact@1
+  - task: PublishPipelineArtifact@1
       inputs:
         targetPath: '$(Pipeline.Workspace)'
         artifact: 'HelloWorld'
         publishLocation: 'pipeline'
 
 - stage: Execute
-  jobs:
-  - job: ExecuteJob
-    steps:
-    - task: DownloadPipelineArtifact@2
+  steps:
+  - task: DownloadPipelineArtifact@2
       inputs:
         buildType: 'current'
         artifactName: 'HelloWorld'
         targetPath: '$(Pipeline.Workspace)'
     
-    - script: |
+  - script: |
         echo 'Executing the Hello World'
         ls 
         pwd 
