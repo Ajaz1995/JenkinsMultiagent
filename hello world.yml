@@ -16,10 +16,8 @@ stages:
       displayName: 'Build Hello World Java Project'
       
 - stage: Deploy
-  jobs:
-  - job: DeployJob
-    steps:
-    - script: |
+  steps:
+  - script: |
         echo 'Executing the Hello World'
         ls 
         pwd 
