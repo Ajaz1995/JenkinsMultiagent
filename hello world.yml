@@ -2,8 +2,7 @@ trigger:
 - main
 
 stages:
-- stage: Build
-  steps:
+  - stage: Build
   - script: |
         echo "Building Hello World Java Project"
         javac HelloWorld.java
@@ -18,8 +17,7 @@ stages:
         artifact: 'HelloWorld'
         publishLocation: 'pipeline'
 
-- stage: Execute
-  steps:
+  - stage: Execute
   - task: DownloadPipelineArtifact@2
     inputs:
         buildType: 'current'
