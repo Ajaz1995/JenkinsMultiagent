@@ -18,6 +18,7 @@ stages:
 - stage: Execute
   jobs:
   - job: ExecuteJob   
+    steps:
     - script: |
         echo 'Executing the Hello World'
         ls 
