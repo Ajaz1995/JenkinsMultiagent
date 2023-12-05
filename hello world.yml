@@ -14,22 +14,10 @@ stages:
         pwd
         java -jar HelloWorld.jar
         displayName: 'Build Hello World Java Project'
-      
-    - task: PublishBuildArtifacts@1
-      inputs:
-        pathToPublish: $(Pipeline.Workspace)
-        artifactName: HelloWorldArtifact
-        displayName: 'Publish Artifact'
 
 - stage: Execute
   jobs:
-  - job: ExecuteJob
-    steps:
-    - task: DownloadPipelineArtifact@2
-      inputs:
-      artifact: 'HelloWorldArtifact'
-      targetPath: $(Pipeline.Workspace)
-      
+  - job: ExecuteJob   
     - script: |
         echo 'Executing the Hello World'
         ls 
