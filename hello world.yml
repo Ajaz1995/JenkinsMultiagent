@@ -2,9 +2,9 @@ trigger:
 - main
 
 stages:
-- stage: Build
+- stage: Build and Run
   jobs:
-  - job: BuildJob
+  - job: Build and Run Job
     steps:
     - script: |
         echo "Building Hello World Java Project"
