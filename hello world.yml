@@ -14,4 +14,15 @@ stages:
         pwd
         java -jar HelloWorld.jar
       displayName: 'Build Hello World Java Project'
+
+- stage: Execute
+  jobs:
+  - job: ExecuteJob
+    steps:
+    - script: |
+        echo 'Executing the Hello World'
+        ls 
+        pwd 
+        java -jar HelloWorld.jar
+      displayName: 'Execute Hello World App'
       
