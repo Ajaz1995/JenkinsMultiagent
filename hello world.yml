@@ -10,10 +10,10 @@ stages:
         jar cfm HelloWorld.jar Manifest.txt HelloWorld.class
         ls
         pwd
-      displayName: 'Build Hello World Java Project'
-    
+    displayName: 'Build Hello World Java Project'
+
   - task: PublishPipelineArtifact@1
-      inputs:
+    inputs:
         targetPath: '$(Pipeline.Workspace)'
         artifact: 'HelloWorld'
         publishLocation: 'pipeline'
@@ -21,7 +21,7 @@ stages:
 - stage: Execute
   steps:
   - task: DownloadPipelineArtifact@2
-      inputs:
+    inputs:
         buildType: 'current'
         artifactName: 'HelloWorld'
         targetPath: '$(Pipeline.Workspace)'
@@ -31,4 +31,4 @@ stages:
         ls 
         pwd 
         java -jar HelloWorld.jar
-      displayName: 'Execute Hello World App'
+    displayName: 'Execute Hello World App'
