@@ -13,6 +13,10 @@ stages:
         ls
         pwd
       displayName: 'Build Hello World Java Project'
+    - task: PublishPipelineArtifact@1
+      inputs:
+        targetPath: '$(Pipeline.Workspace)'
+        publishLocation: 'pipeline'
 
 - stage: Execute
   jobs:
