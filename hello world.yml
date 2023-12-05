@@ -14,10 +14,10 @@ stages:
         pwd
       displayName: 'Build Hello World Java Project'
     - task: PublishPipelineArtifact@1
-      inputs:
-      targetPath: '$(Pipeline.Workspace)'
-      artifact: 'HelloWorld'
-      publishLocation: 'pipeline'
+        inputs:
+        targetPath: '$(Pipeline.Workspace)'
+        artifact: 'HelloWorld'
+        publishLocation: 'pipeline'
 
 - stage: Execute
   jobs:
